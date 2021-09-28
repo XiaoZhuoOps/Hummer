@@ -1,0 +1,12 @@
+@startuml
+interface BeanFactory{
+    Object getBean(String name)
+}
+
+interface ApplicationContext{
+    String[] getBeanDefinitionNames();
+}
+
+ApplicationContext --> BeanFactory
+
+@enduml
