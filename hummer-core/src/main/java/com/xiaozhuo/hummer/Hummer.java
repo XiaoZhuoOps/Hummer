@@ -5,7 +5,6 @@ package com.xiaozhuo.hummer;
  */
 public final class Hummer implements Component<Hummer.HummerInitModel, Hummer.HummerRunModel>{
 
-
     @Override
     public void init(HummerInitModel initModel) {
         //1、扫描和加载所有module

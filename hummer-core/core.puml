@@ -9,4 +9,28 @@ interface ApplicationContext{
 
 ApplicationContext --> BeanFactory
 
+abstract class AbstractApplicationContext{
+
+}
+
+interface BeanDefinition{
+}
+
+interface BeanFactoryPostProcessor{
+
+}
+
+interface BeanPostProcessor{
+}
+
+interface SingletonBeanRegistry{
+}
+
+interface BeanDefinitionReader{}
+
+interface BeanDefinitionRegistry{}
+
+interface InstantiationStrategy{}
+
+
 @enduml
