@@ -1,8 +1,6 @@
 package com.xiaozhuo.hummer.beans.utils;
 
-import cn.hutool.core.bean.BeanUtil;
-
-import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * bean 工具类
@@ -13,17 +11,7 @@ public class BeanUtils {
     /**
      * 给bean设置属性
      */
-    public static void setProperty(Object bean, String name, Object value) throws IllegalAccessException {
-        Class<?> aClass = bean.getClass();
-        Field[] fields = aClass.getDeclaredFields();
-
-        for (Field field : fields) {
-            if (field != null && field.getName().equals(name)) {
-                field.setAccessible(true);
-                field.set(bean, value);
-                field.setAccessible(false);
-                break;
-            }
-        }
+    public static void setProperty(Object bean, String name, Object value) throws IllegalAccessException, InvocationTargetException {
+        org.apache.commons.beanutils.BeanUtils.setProperty(bean, name, value);
     }
 }
