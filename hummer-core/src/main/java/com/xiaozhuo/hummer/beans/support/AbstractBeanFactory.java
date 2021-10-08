@@ -2,7 +2,6 @@ package com.xiaozhuo.hummer.beans.support;
 
 import com.xiaozhuo.hummer.BeansException;
 import com.xiaozhuo.hummer.beans.BeanFactory;
-import com.xiaozhuo.hummer.beans.config.BeanDefinition;
 import com.xiaozhuo.hummer.beans.config.SingletonBeanRegistry;
 
 import java.util.HashMap;

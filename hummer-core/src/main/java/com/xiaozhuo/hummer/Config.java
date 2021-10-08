@@ -1,7 +1,7 @@
 package com.xiaozhuo.hummer;
 
 /**
- * @author huangjunqing 2021/9/28
+ * @author xiaozhuo 2021/10/5 10:15
  */
 public interface Config {
 

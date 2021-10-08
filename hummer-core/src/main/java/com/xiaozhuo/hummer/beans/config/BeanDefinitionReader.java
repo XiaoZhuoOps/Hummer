@@ -1,5 +1,6 @@
 package com.xiaozhuo.hummer.beans.config;
 
+import com.xiaozhuo.hummer.AppContextConfig;
 import com.xiaozhuo.hummer.BeansException;
 
 /**
@@ -10,5 +11,5 @@ public interface BeanDefinitionReader {
 
     BeanDefinitionRegistry getRegistry();
 
-    void loadBeanDefinitions(String... locations) throws BeansException;
+    void loadBeanDefinitions(AppContextConfig appContextConfig) throws BeansException;
 }

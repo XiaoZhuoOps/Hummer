@@ -1,36 +1,19 @@
 package com.xiaozhuo.hummer;
 
+import com.xiaozhuo.hummer.context.AppContext;
+
 /**
  * 入口类
  */
-public final class Hummer implements Component<Hummer.HummerInitModel, Hummer.HummerRunModel>{
+public final class Hummer {
 
-    @Override
-    public void init(HummerInitModel initModel) {
-        //1、扫描和加载所有module
+    private AppContext appContext;
 
-    }
+    public Hummer create(Config... configs) {
+        for (Config config : configs) {
+            config.load(appContext);
+        }
 
-    @Override
-    public void run(HummerRunModel runModel) {
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    @Override
-    public void destroy() {
-
-    }
-
-    public static class HummerInitModel{
-
-    }
-
-    public static class HummerRunModel{
-
+        return this;
     }
 }

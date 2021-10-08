@@ -5,6 +5,7 @@ import com.xiaozhuo.hummer.beans.config.PropertyValue;
 import com.xiaozhuo.hummer.beans.config.PropertyValues;
 
 /**
+ * bean 的配置信息
  * @author xiaozhuo 2021/10/3 13:35
  */
 public abstract class AbstractBeanDefinition implements BeanDefinition {
@@ -31,5 +32,10 @@ public abstract class AbstractBeanDefinition implements BeanDefinition {
     @Override
     public PropertyValues getPropertyValues() {
         return propertyValues;
+    }
+
+    public AbstractBeanDefinition(Class beanClass, PropertyValues propertyValues) {
+        this.beanClass = beanClass;
+        this.propertyValues = propertyValues;
     }
 }

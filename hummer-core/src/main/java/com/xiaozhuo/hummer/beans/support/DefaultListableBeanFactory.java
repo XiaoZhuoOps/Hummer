@@ -51,18 +51,20 @@ public class DefaultListableBeanFactory extends AbstractBeanFactory implements B
 
     private void applyPropertyValues(String beanName, BeanDefinition beanDefinition, Object bean) {
         PropertyValues propertyValues = beanDefinition.getPropertyValues();
-        for (PropertyValue pv : propertyValues.getPropertyValues()) {
-            String name = pv.getName();
-            Object value = pv.getValue();
+        if (propertyValues != null) {
+            for (PropertyValue pv : propertyValues.getPropertyValues()) {
+                String name = pv.getName();
+                Object value = pv.getValue();
 
-            // 对于引用类型，需要从容器中获取bean对象再注入
-            if (value instanceof BeanReference) {
-                value = getBean(((BeanReference) value).getBeanName());
-            }
-            try {
-                BeanUtils.setProperty(bean, pv.getName(), pv.getValue());
-            } catch (Throwable e) {
-                throw new BeansException("[DefaultListableBeanFactory] setProperty error!", e);
+                // 对于引用类型，需要从容器中获取bean对象再注入
+                if (value instanceof BeanReference) {
+                    value = getBean(((BeanReference) value).getBeanName());
+                }
+                try {
+                    BeanUtils.setProperty(bean, pv.getName(), pv.getValue());
+                } catch (Throwable e) {
+                    throw new BeansException("[DefaultListableBeanFactory] setProperty error!", e);
+                }
             }
         }
     }
@@ -95,5 +97,10 @@ public class DefaultListableBeanFactory extends AbstractBeanFactory implements B
 
     public InstantiationStrategy getInstantiationStrategy() {
         return this.instantiationStrategy;
+    }
+
+    public DefaultListableBeanFactory(InstantiationStrategy instantiationStrategy) {
+        super();
+        this.instantiationStrategy = instantiationStrategy;
     }
 }

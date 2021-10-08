@@ -1,26 +1,28 @@
 package com.xiaozhuo.hummer;
 
-import com.xiaozhuo.hummer.beans.utils.BeanUtils;
+import com.xiaozhuo.hummer.beans.support.AnnotatedBeanDefinition;
+import com.xiaozhuo.hummer.beans.support.DefaultListableBeanFactory;
+import com.xiaozhuo.hummer.beans.support.SimpleInstantiationStrategy;
 import org.junit.Test;
 
 public class StartUpTest {
 
     @Test
-    public void testBeanUtils() {
-        Foo foo = new Foo(1);
-        try {
-            BeanUtils.setProperty(foo, "a", 2);
-            System.out.println(foo.a);
-        } catch (Throwable e) {
-            System.out.println("error!");
-        }
+    public void testStart() {
+
+//        Hummer hummer = new Hummer().create(
+//                AppContextModule.builder()
+//                        .beanFactory(new DefaultListableBeanFactory(new SimpleInstantiationStrategy()))
+//                        .build()
+//        );
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory(new SimpleInstantiationStrategy());
+
+        AnnotatedBeanDefinition beanDefinition = new AnnotatedBeanDefinition();
+        beanDefinition.setBeanClass(Foo.class);
+        beanFactory.registerBeanDefinition("fooBean", beanDefinition);
+
+        Foo fooBean = (Foo) beanFactory.getBean("fooBean", 2);
+        System.out.println(fooBean.a);
     }
 }
 
-class Foo {
-    int a;
-
-    public Foo(int a) {
-        this.a = a;
-    }
-}
